@@ -10,4 +10,8 @@ class Api::V1::SessionsController < ApplicationController
       render json: { error: "Incorrect Email or Password" }, status: :unauthorized
     end
   end
+
+  def destroy
+    render json: { message: "Logged out successfully" }, status: :ok
+  end
 end

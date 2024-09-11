@@ -16,7 +16,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :admin_sessions, only: [:create]
+      resources :admin_sessions, only: [:create, :destroy]
       namespace :admin do
         resources :posts, only: [:index] do
           member do

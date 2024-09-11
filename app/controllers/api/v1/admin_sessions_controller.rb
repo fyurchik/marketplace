@@ -13,6 +13,6 @@ class Api::V1::AdminSessionsController < ApplicationController
   end
 
   def destroy
-    # Logic to log out the admin
+    render json: { message: "Logged out successfully" }, status: :ok
   end
 end
