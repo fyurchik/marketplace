@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :registrations, only: [:create]
       resources :sessions, only: [:create, :destroy]
-      
+
       resources :posts do
         collection do
           get 'filter'
@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 
       resources :admin_sessions, only: [:create]
       namespace :admin do
-        resources :posts, only: [:index, :update]
+        resources :posts, only: [:index] do
+          member do
+            patch 'update_status'
+          end
+        end
       end
     end
   end
