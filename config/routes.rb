@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :registrations, only: [:create]
-      resources :sessions, only: [:create, :destroy]
+      resource :registration, only: [:create]
+      resource :session, only: [:create, :destroy]
 
       resources :posts do
         collection do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :admin_sessions, only: [:create, :destroy]
+      resource :admin_session, only: [:create, :destroy]
       namespace :admin do
         resources :posts, only: [:index] do
           member do

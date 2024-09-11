@@ -1,6 +1,4 @@
 class Api::V1::Admin::PostsController < ApplicationController
-  skip_before_action :authenticate_user
-  include AuthenticateAdminHelper
   before_action :authenticate_admin
   before_action :set_post, only: [:update_status]
 

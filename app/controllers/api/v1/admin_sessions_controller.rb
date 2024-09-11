@@ -1,5 +1,4 @@
 class Api::V1::AdminSessionsController < ApplicationController
-  skip_before_action :authenticate_user, only: [:create]
   before_action :authenticate_admin, only: [:destroy]
 
   def create
