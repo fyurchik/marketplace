@@ -7,10 +7,19 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :registrations
-      resources :sessions
-      resources :posts
-      resources :admin_sessions, only: %i[create]
+      resources :registrations, only: [:create]
+      resources :sessions, only: [:create, :destroy]
+      
+      resources :posts do
+        collection do
+          get 'filter'
+        end
+      end
+
+      resources :admin_sessions, only: [:create]
+      namespace :admin do
+        resources :posts, only: [:index, :update]
+      end
     end
   end
 
