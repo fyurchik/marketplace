@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :registrations
       resources :sessions
       resources :posts
+      resources :admin_sessions, only: %i[create]
     end
   end
 
