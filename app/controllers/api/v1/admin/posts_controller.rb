@@ -3,7 +3,7 @@ class Api::V1::Admin::PostsController < ApplicationController
   before_action :set_post, only: [:update_status]
 
   def index
-    @posts = Post.all.where(status: "pending")
+    @posts = Post.all.where(status:"pending")
     render json: @posts
   end
 
@@ -11,7 +11,7 @@ class Api::V1::Admin::PostsController < ApplicationController
     if @post.update(status_params)
       render json: @post
     else
-      render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
+      render json: {errors: @post.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

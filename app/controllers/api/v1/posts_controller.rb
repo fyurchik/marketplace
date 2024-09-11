@@ -35,7 +35,7 @@ class Api::V1::PostsController < ApplicationController
     if @post.update(post_params)
       render json: @post
     else
-      render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
+      render json: {errors:@post.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -52,6 +52,6 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 end

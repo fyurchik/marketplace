@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_11_170045) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_11_220202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_11_170045) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "blacklisted_tokens", force: :cascade do |t|
+    t.string "token", null: false
+    t.datetime "blacklisted_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_blacklisted_tokens_on_token", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
