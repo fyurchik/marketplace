@@ -5,7 +5,7 @@ class Api::V1::Admin::PostsController < ApplicationController
   before_action :set_post, only: [:update_status]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.where(status: "pending")
     render json: @posts
   end
 
