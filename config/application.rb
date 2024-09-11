@@ -29,4 +29,6 @@ module Marketplace
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
   end
+
+  Dir['./lib/**/*.rb'].each { |file| require file }
 end
